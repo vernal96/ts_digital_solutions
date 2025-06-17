@@ -1,17 +1,13 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
-    plugins: [react()],
+    plugins: [vue()],
+    base: './',
     server: {
         proxy: {
-            '/items': {
-                target: 'http://localhost:3000',
-                changeOrigin: true
-            },
-            '/select': { target: 'http://localhost:3000', changeOrigin: true },
-            '/deselect': { target: 'http://localhost:3000', changeOrigin: true },
-            '/reorder': { target: 'http://localhost:3000', changeOrigin: true }
+            '/items': 'http://localhost:3000',
+            '/state': 'http://localhost:3000'
         }
     }
 });
